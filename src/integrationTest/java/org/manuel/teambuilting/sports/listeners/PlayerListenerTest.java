@@ -17,8 +17,8 @@ import javax.inject.Inject;
 import java.math.BigInteger;
 import java.util.concurrent.TimeUnit;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertNotNull;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * @author Manuel Doncel Martos
