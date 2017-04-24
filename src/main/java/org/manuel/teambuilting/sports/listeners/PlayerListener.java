@@ -3,7 +3,6 @@ package org.manuel.teambuilting.sports.listeners;
 import lombok.AllArgsConstructor;
 import org.manuel.teambuilting.messages.PlayerDeletedEvent;
 import org.manuel.teambuilting.messages.PlayerRegisteredEvent;
-import org.manuel.teambuilting.messages.PlayerVisitedEvent;
 import org.manuel.teambuilting.sports.model.UserData;
 import org.manuel.teambuilting.sports.repositories.PlayerToTeamSportDetailsRepository;
 import org.manuel.teambuilting.sports.repositories.UserDataRepository;
@@ -42,10 +41,6 @@ public class PlayerListener {
     @RabbitHandler
     public void handle(final PlayerDeletedEvent event) {
         playerToTeamSportDetailsRepository.delete(playerToTeamSportDetailsRepository.findByPlayerId(event.getPlayerId()));
-    }
-
-    @RabbitHandler
-    public void handle(final PlayerVisitedEvent event) {
     }
 
 }

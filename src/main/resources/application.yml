@@ -21,7 +21,7 @@ messaging:
         autodelete: false
       queue:
         name: TEAMBUILTING.Q.SPORTS.PLAYER
-        binding: player.#
+        binding: player.cud.#
         durable: true
         autodelete: false
 
