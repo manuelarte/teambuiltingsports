@@ -41,7 +41,7 @@ public class UserDataAspect {
 		final UserProfile user = auth0Client.getUser((Auth0JWTToken) auth);
 		final UserData userData = userService.getOrCreateUserData(user.getId());
 		if (!Optional.ofNullable(userData.getPlayerId()).isPresent() ||
-				userData.getPlayerId().equals(playerIdDependentEntity.getPlayerId())) {
+				!userData.getPlayerId().equals(playerIdDependentEntity.getPlayerId())) {
 			throw new UserNotAllowedToModifyEntity();
 		}
 	}
