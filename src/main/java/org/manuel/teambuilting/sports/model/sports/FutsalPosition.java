@@ -31,7 +31,7 @@ import lombok.Getter;
 @Getter
 public enum FutsalPosition implements TeamSportPosition {
 
-	GK("goalkeeper", 0.5, 0),
+	GK("Goalkeeper", 0.5, 0),
 	LD("Left Defender", 0.25, 0.25),
 	DF("Defender", 0.5, 0.25),
 	RD("Right Defender", 1-LD.x, LD.y),
