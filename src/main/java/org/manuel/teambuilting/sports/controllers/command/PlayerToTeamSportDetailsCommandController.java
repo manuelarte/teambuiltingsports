@@ -12,7 +12,7 @@ import java.math.BigInteger;
 @RestController
 @RequestMapping("/sports/players/{playerId}")
 @AllArgsConstructor
-public class PlayerToTeamSportCommandController {
+public class PlayerToTeamSportDetailsCommandController {
 
 	private final PlayerToTeamSportDetailsCommandService playerToTeamSportDetailsService;
 
