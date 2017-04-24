@@ -2,6 +2,7 @@ package org.manuel.teambuilting.messages;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
@@ -14,6 +15,7 @@ import java.util.Date;
  */
 @Data
 @AllArgsConstructor
+@Builder
 public class PlayerRegisteredEvent {
 
     public static final String ROUTING_KEY = "player.cud.registered";
