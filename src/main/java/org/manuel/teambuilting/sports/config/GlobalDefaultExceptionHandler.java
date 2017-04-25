@@ -1,7 +1,7 @@
 package org.manuel.teambuilting.sports.config;
 
 import org.manuel.teambuilting.exceptions.ExceptionMessage;
-import org.manuel.teambuilting.exceptions.UserNotAllowedToModifyEntity;
+import org.manuel.teambuilting.exceptions.UserNotAllowedToModifyEntityException;
 import org.manuel.teambuilting.exceptions.ValidationRuntimeException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,8 +25,8 @@ public class GlobalDefaultExceptionHandler {
 		return new ResponseEntity<Object>(errorMessage, status);
 	}
 
-	@ExceptionHandler({UserNotAllowedToModifyEntity.class})
-	public ResponseEntity<Object> userNotAllowedToModifyEntityExceptionHandler(final UserNotAllowedToModifyEntity exception, final WebRequest request) {
+	@ExceptionHandler({UserNotAllowedToModifyEntityException.class})
+	public ResponseEntity<Object> userNotAllowedToModifyEntityExceptionHandler(final UserNotAllowedToModifyEntityException exception, final WebRequest request) {
 		final HttpStatus status = HttpStatus.FORBIDDEN;
 		final ExceptionMessage errorMessage = new ExceptionMessage(status, "NOT ALLOWED", "NOT ALLOWED", "");
 		return new ResponseEntity<Object>(errorMessage, status);
