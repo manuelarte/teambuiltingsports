@@ -6,7 +6,7 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.manuel.teambuilting.core.model.PlayerDependentEntity;
-import org.manuel.teambuilting.exceptions.UserNotAllowedToModifyEntityException;
+import org.manuel.teambuilting.core.exceptions.UserNotAllowedToModifyEntityException;
 import org.manuel.teambuilting.sports.model.UserData;
 import org.manuel.teambuilting.sports.services.query.UserService;
 import org.manuel.teambuilting.sports.util.Util;

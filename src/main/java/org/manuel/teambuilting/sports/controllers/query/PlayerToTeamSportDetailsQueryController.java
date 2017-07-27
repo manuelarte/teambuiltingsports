@@ -1,22 +1,17 @@
 package org.manuel.teambuilting.sports.controllers.query;
 
-import java.math.BigInteger;
-import java.util.Collection;
-import java.util.Optional;
-
-import javax.inject.Inject;
-
-import org.manuel.teambuilting.exceptions.ErrorCode;
-import org.manuel.teambuilting.exceptions.ValidationRuntimeException;
+import org.manuel.teambuilting.core.exceptions.ErrorCode;
+import org.manuel.teambuilting.core.exceptions.ValidationRuntimeException;
 import org.manuel.teambuilting.sports.model.PlayerToTeamSportDetails;
 import org.manuel.teambuilting.sports.services.query.PlayerToTeamSportDetailsQueryService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.Assert;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.inject.Inject;
+import java.math.BigInteger;
+import java.util.Collection;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/sports/players")

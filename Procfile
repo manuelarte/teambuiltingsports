@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -Dspring.profiles.active=production -jar build/libs/teambuiltingsports-0.1.0-SNAPSHOT.jar
+web: java -Dserver.port=$PORT -Dspring.profiles.active=production -jar build/libs/teambuilting-sports-0.1.0-SNAPSHOT.jar

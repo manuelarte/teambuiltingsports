@@ -3,7 +3,7 @@
  */
 package org.manuel.teambuilting.sports.controllers.query;
 
-import org.manuel.teambuilting.exceptions.ValidationRuntimeException;
+import org.manuel.teambuilting.core.exceptions.ValidationRuntimeException;
 import org.manuel.teambuilting.sports.model.TeamSport;
 import org.manuel.teambuilting.sports.model.TeamSportPosition;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,7 +16,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import static org.manuel.teambuilting.exceptions.ErrorCode.SPORT_NOT_FOUND;
+import static org.manuel.teambuilting.core.exceptions.ErrorCode.SPORT_NOT_FOUND;
 
 /**
  * @author Manuel Doncel Martos

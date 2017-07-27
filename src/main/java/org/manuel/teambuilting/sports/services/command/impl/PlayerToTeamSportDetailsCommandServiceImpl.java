@@ -1,8 +1,8 @@
 package org.manuel.teambuilting.sports.services.command.impl;
 
 import org.manuel.teambuilting.core.services.command.AbstractCommandService;
-import org.manuel.teambuilting.exceptions.ErrorCode;
-import org.manuel.teambuilting.exceptions.ValidationRuntimeException;
+import org.manuel.teambuilting.core.exceptions.ErrorCode;
+import org.manuel.teambuilting.core.exceptions.ValidationRuntimeException;
 import org.manuel.teambuilting.sports.model.PlayerToTeamSportDetails;
 import org.manuel.teambuilting.sports.repositories.PlayerToTeamSportDetailsRepository;
 import org.manuel.teambuilting.sports.services.command.PlayerToTeamSportDetailsCommandService;
