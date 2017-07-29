@@ -16,8 +16,8 @@ import java.util.Optional;
  *
  */
 @Service
-class PlayerToTeamSportDetailsQueryServiceImpl extends AbstractQueryService<PlayerToTeamSportDetails, String, PlayerToTeamSportDetailsRepository> implements
-	PlayerToTeamSportDetailsQueryService {
+class PlayerToTeamSportDetailsQueryServiceImpl extends AbstractQueryService<PlayerToTeamSportDetails, String, PlayerToTeamSportDetailsRepository>
+        implements PlayerToTeamSportDetailsQueryService {
 
 	@Inject
 	public PlayerToTeamSportDetailsQueryServiceImpl(final PlayerToTeamSportDetailsRepository playerToTeamSportDetailsRepository) {

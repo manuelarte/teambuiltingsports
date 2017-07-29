@@ -11,9 +11,9 @@ plugins {
 	id 'com.github.ben-manes.versions' version '0.13.0'
 	id 'nebula.contacts' version '3.0.1'
 	id 'nebula.facet' version '3.3.0'
-	id 'nebula.lint' version '6.3.0'
+	id 'nebula.lint' version '7.4.0'
 	id 'org.sonarqube' version '2.2.1'
-	id 'org.springframework.boot' version '1.4.3.RELEASE'
+	id 'org.springframework.boot' version '1.5.5.RELEASE'
 }
 
 ext {
@@ -143,6 +143,7 @@ dependencies {
 	compile 'org.springframework.boot:spring-boot-starter-data-mongodb'
 
     compile 'org.manuel.teambuilting:teambuilting-messages:0.1.0-SNAPSHOT'
+    compile 'org.manuel.teambuilting:teambuilting-core:0.1.0-SNAPSHOT'
     compile 'org.manuel.teambuilting:teambuilting-exceptions:0.1.0-SNAPSHOT'
 
 	compile 'com.auth0:auth0-spring-security-mvc:1.2.3'

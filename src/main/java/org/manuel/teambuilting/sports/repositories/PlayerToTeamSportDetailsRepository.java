@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.math.BigInteger;
 
 @Repository
-public interface PlayerToTeamSportDetailsRepository extends PlayerDependentRepository<PlayerToTeamSportDetails, String>, MongoRepository<PlayerToTeamSportDetails, String> {
+public interface PlayerToTeamSportDetailsRepository extends PlayerDependentRepository<PlayerToTeamSportDetails>, MongoRepository<PlayerToTeamSportDetails, String> {
 
 	PlayerToTeamSportDetails findByPlayerIdAndSportIgnoringCase(BigInteger playerId, String sport);
 

@@ -10,5 +10,5 @@ import org.springframework.stereotype.Repository;
  * @since 16/04/2017.
  */
 @Repository
-public interface UserDataRepository extends PlayerDependentRepository<UserData, String>, MongoRepository<UserData, String> {
+public interface UserDataRepository extends PlayerDependentRepository<UserData>, MongoRepository<UserData, String> {
 }

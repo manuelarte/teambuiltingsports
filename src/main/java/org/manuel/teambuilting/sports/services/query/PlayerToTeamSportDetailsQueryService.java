@@ -11,7 +11,7 @@ import java.util.Optional;
  * @author Manuel Doncel Martos
  *
  */
-public interface PlayerToTeamSportDetailsQueryService extends BaseQueryService<PlayerToTeamSportDetails, String>, PlayerDependentQueryService<PlayerToTeamSportDetails, String> {
+public interface PlayerToTeamSportDetailsQueryService extends BaseQueryService<PlayerToTeamSportDetails, String>, PlayerDependentQueryService<PlayerToTeamSportDetails> {
 
 	Optional<PlayerToTeamSportDetails> findPlayerDetailsForSport(BigInteger playerId, String sport);
 

@@ -24,13 +24,13 @@ public class PlayerToTeamSportDetailsQueryController {
 		this.queryService = queryService;
 	}
 
-	@RequestMapping(method = RequestMethod.GET)
+	@GetMapping
 	public Collection<PlayerToTeamSportDetails> findAllPlayerSportDetails(@RequestParam final BigInteger playerId) {
 		Assert.notNull(playerId);
 		return queryService.findByPlayerId(playerId);
 	}
 
-	@RequestMapping(path = "/{sport}", method = RequestMethod.GET)
+	@GetMapping(path = "/{sport}")
 	public ResponseEntity<PlayerToTeamSportDetails> findPlayerSportDetailsForSport(@RequestParam final BigInteger playerId, @PathVariable("sport") final String sport) {
 		Assert.notNull(playerId);
 		Assert.hasLength(sport);
