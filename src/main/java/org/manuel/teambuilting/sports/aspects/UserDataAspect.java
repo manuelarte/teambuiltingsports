@@ -27,7 +27,7 @@ public class UserDataAspect {
 	private final Util util;
 
 	@Before(
-		value="@annotation(org.manuel.teambuilting.sports.aspects.UserCanCud) && args(playerIdDependentEntity)")
+		value="@annotation(org.manuel.teambuilting.core.aspects.UserCanCud) && args(playerIdDependentEntity)")
 	public void saveEntityToUserData(final JoinPoint call, final PlayerDependentEntity playerIdDependentEntity) {
 		final Auth0User user = util.getUserProfile().get();
 		final UserData userData = userService.getOrCreateUserData(user.getUserId());
