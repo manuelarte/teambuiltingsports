@@ -25,7 +25,7 @@ public class AppAuthorizationManagerImpl implements AppAuthorizationManager {
     private final Map<Class<?>, AppEntityAuthorization<?>> authorizations;
 
     @Override
-    public <T> AppEntityAuthorization<T> getEntityAuthorizationFor(final Class<T> clazz) {
+    public <T> AppEntityAuthorization<? super T> getEntityAuthorizationFor(final Class<? extends T> clazz) {
         return (AppEntityAuthorization<T>) authorizations.get(clazz);
     }
 
