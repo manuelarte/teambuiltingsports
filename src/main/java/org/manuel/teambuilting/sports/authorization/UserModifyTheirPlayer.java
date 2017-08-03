@@ -5,7 +5,7 @@ import com.google.common.base.Optional;
 import lombok.AllArgsConstructor;
 import org.manuel.teambuilting.core.exceptions.UserNotAllowedToModifyEntityException;
 import org.manuel.teambuilting.core.model.PlayerDependentEntity;
-import org.manuel.teambuilting.rights.functions.AppRightConstraint;
+import org.manuel.teambuilting.rights.AppRightConstraint;
 import org.manuel.teambuilting.sports.model.UserData;
 import org.manuel.teambuilting.sports.repositories.UserDataRepository;
 

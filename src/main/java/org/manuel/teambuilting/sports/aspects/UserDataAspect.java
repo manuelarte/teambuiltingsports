@@ -8,7 +8,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.manuel.teambuilting.core.exceptions.UserNotAllowedToModifyEntityException;
 import org.manuel.teambuilting.core.model.PlayerDependentEntity;
-import org.manuel.teambuilting.rights.roles.AppEntityAuthorization;
+import org.manuel.teambuilting.rights.AppEntityAuthorization;
 import org.manuel.teambuilting.rights.roles.AppRole;
 import org.manuel.teambuilting.rights.roles.Permission;
 import org.manuel.teambuilting.sports.authorization.AppAuthorizationManagerImpl;

@@ -3,8 +3,8 @@ package org.manuel.teambuilting.sports.authorization;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.Singular;
-import org.manuel.teambuilting.rights.functions.AppRightConstraint;
-import org.manuel.teambuilting.rights.roles.AppPermissionAndRightConstraints;
+import org.manuel.teambuilting.rights.AppRightConstraint;
+import org.manuel.teambuilting.rights.AppPermissionAndRightConstraints;
 import org.manuel.teambuilting.rights.roles.Permission;
 
 import java.util.HashMap;

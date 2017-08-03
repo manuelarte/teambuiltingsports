@@ -4,7 +4,6 @@ import com.auth0.spring.security.api.authentication.AuthenticationJsonWebToken;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Singular;
-import org.manuel.teambuilting.rights.functions.AppRightConstraint;
 
 import java.util.Arrays;
 import java.util.Set;

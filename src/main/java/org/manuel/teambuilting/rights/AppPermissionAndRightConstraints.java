@@ -1,7 +1,7 @@
-package org.manuel.teambuilting.rights.roles;
+package org.manuel.teambuilting.rights;
 
 
-import org.manuel.teambuilting.rights.functions.AppRightConstraint;
+import org.manuel.teambuilting.rights.roles.Permission;
 
 /**
  * @author Manuel Doncel Martos

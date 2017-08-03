@@ -2,10 +2,10 @@ package org.manuel.teambuilting.sports.config;
 
 import lombok.AllArgsConstructor;
 import org.manuel.teambuilting.rights.AppRightConstraintSet;
-import org.manuel.teambuilting.rights.functions.AppRightConstraint;
+import org.manuel.teambuilting.rights.AppRightConstraint;
 import org.manuel.teambuilting.rights.functions.CollectionEntriesFunction;
-import org.manuel.teambuilting.rights.roles.AppEntityAuthorization;
-import org.manuel.teambuilting.rights.roles.AppPermissionAndRightConstraints;
+import org.manuel.teambuilting.rights.AppEntityAuthorization;
+import org.manuel.teambuilting.rights.AppPermissionAndRightConstraints;
 import org.manuel.teambuilting.rights.roles.AppRole;
 import org.manuel.teambuilting.sports.authorization.AppAuthorizationManagerImpl;
 import org.manuel.teambuilting.sports.authorization.AppEntityAuthorizationImpl;

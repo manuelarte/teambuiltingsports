@@ -1,4 +1,4 @@
-package org.manuel.teambuilting.rights.functions;
+package org.manuel.teambuilting.rights;
 
 import com.auth0.spring.security.api.authentication.AuthenticationJsonWebToken;
 
