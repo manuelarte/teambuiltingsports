@@ -1,7 +1,7 @@
 package org.manuel.teambuilting.sports.config;
 
 import lombok.AllArgsConstructor;
-import org.manuel.teambuilting.rights.AppRightConstraintSet;
+import org.manuel.teambuilting.rights.impl.AppRightConstraintOfSeveralConstraints;
 import org.manuel.teambuilting.rights.AppRightConstraint;
 import org.manuel.teambuilting.rights.functions.CollectionEntriesFunction;
 import org.manuel.teambuilting.rights.AppEntityAuthorization;
@@ -37,9 +37,9 @@ public class AuthorizationConfig {
         final AppPermissionAndRightConstraints<PlayerToTeamSportDetails> rightsForPlayerToTeamSportDetails
                 = new AppPermissionAndRightConstraintsImpl.PermissionAndRightConstraintsImplBuilder()
                 .create(new UserModifyTheirPlayer<>(getEntityAuthorizationManagerForCreatePlayerToTeamSportDetails(), userDataRepository))
-                .read(AppRightConstraintSet.of(allow()))
-                .update(new UserModifyTheirPlayer<>(AppRightConstraintSet.of(allow()), userDataRepository))
-                .delete(new UserModifyTheirPlayer<>(AppRightConstraintSet.of(allow()), userDataRepository))
+                .read(AppRightConstraintOfSeveralConstraints.of(allow()))
+                .update(new UserModifyTheirPlayer<>(AppRightConstraintOfSeveralConstraints.of(allow()), userDataRepository))
+                .delete(new UserModifyTheirPlayer<>(AppRightConstraintOfSeveralConstraints.of(allow()), userDataRepository))
                 .build();
 
         final AppEntityAuthorization<PlayerToTeamSportDetails> rolePermissionAndRightConstraintsMap
@@ -61,7 +61,7 @@ public class AuthorizationConfig {
         final CollectionEntriesFunction<PlayerToTeamSportDetails, PlayerToTeamSportDetailsRepository>
                 maxOnePlayerToTeamSportDetails =
                 new CollectionEntriesFunction<>(max(1), playerToTeamSportDetailsRepository);
-        return AppRightConstraintSet.of(maxOnePlayerToTeamSportDetails);
+        return AppRightConstraintOfSeveralConstraints.of(maxOnePlayerToTeamSportDetails);
     }
 
     private AppEntityAuthorization<?> test() {

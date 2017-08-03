@@ -1,9 +1,10 @@
-package org.manuel.teambuilting.rights;
+package org.manuel.teambuilting.rights.impl;
 
 import com.auth0.spring.security.api.authentication.AuthenticationJsonWebToken;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Singular;
+import org.manuel.teambuilting.rights.AppRightConstraint;
 
 import java.util.Arrays;
 import java.util.Set;
@@ -15,16 +16,16 @@ import java.util.stream.Collectors;
  */
 @AllArgsConstructor
 @Builder
-public class AppRightConstraintSet<Entity> implements AppRightConstraint<Entity> {
+public class AppRightConstraintOfSeveralConstraints<Entity> implements AppRightConstraint<Entity> {
 
     @Singular
     private final Set<AppRightConstraint<Entity>> chains;
 
-    public static <Entity> AppRightConstraintSet<Entity> of(final AppRightConstraint<Entity>... chains) {
-        return new AppRightConstraintSet<>(chains);
+    public static <Entity> AppRightConstraintOfSeveralConstraints<Entity> of(final AppRightConstraint<Entity>... chains) {
+        return new AppRightConstraintOfSeveralConstraints<>(chains);
     }
 
-    public AppRightConstraintSet(AppRightConstraint<Entity>... appRights) {
+    public AppRightConstraintOfSeveralConstraints(AppRightConstraint<Entity>... appRights) {
         this.chains = Arrays.stream(appRights).collect(Collectors.toSet());
     }
 

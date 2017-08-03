@@ -8,5 +8,6 @@ import org.manuel.teambuilting.rights.AppRight;
  */
 public enum Rights implements AppRight {
 
-    SEND_EMAIL, WHATEVER_THAT_DOES_NOT_INVOLVE_ENTITIES;
+    // Here you add all the rights that does not involve change in entities
+    // SEND_EMAIL, WHATEVER_THAT_DOES_NOT_INVOLVE_ENTITIES;
 }
