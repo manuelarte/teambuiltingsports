@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import lombok.Singular;
-import org.manuel.teambuilting.rights.AppRight;
+import org.manuel.teambuilting.rights.functions.AppRightConstraint;
 import org.manuel.teambuilting.rights.roles.AppEntityAuthorization;
 import org.manuel.teambuilting.rights.roles.AppPermissionAndRightConstraints;
 import org.manuel.teambuilting.rights.roles.AppRole;
@@ -46,22 +46,22 @@ public class AppEntityAuthorizationImpl<T> implements AppEntityAuthorization<T> 
             private final AppEntityAuthorizationImplBuilder<T> parent;
             private AppPermissionAndRightConstraintsImpl.PermissionAndRightConstraintsImplBuilder builder = new AppPermissionAndRightConstraintsImpl.PermissionAndRightConstraintsImplBuilder();
 
-            public PermissonMapBuilder<T> create(final AppRight<T> entityRights) {
+            public PermissonMapBuilder<T> create(final AppRightConstraint<T> entityRights) {
                 builder = builder.create(entityRights);
                 return this;
             }
 
-            public PermissonMapBuilder<T> read(final AppRight<T> entityRights) {
+            public PermissonMapBuilder<T> read(final AppRightConstraint<T> entityRights) {
                 builder = builder.read(entityRights);
                 return this;
             }
 
-            public PermissonMapBuilder<T> update(final AppRight<T> entityRights) {
+            public PermissonMapBuilder<T> update(final AppRightConstraint<T> entityRights) {
                 builder = builder.update(entityRights);
                 return this;
             }
 
-            public PermissonMapBuilder<T> delete(final AppRight<T> entityRights) {
+            public PermissonMapBuilder<T> delete(final AppRightConstraint<T> entityRights) {
                 builder = builder.delete(entityRights);
                 return this;
             }

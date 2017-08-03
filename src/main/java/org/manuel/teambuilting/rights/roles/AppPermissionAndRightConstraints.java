@@ -1,7 +1,7 @@
 package org.manuel.teambuilting.rights.roles;
 
 
-import org.manuel.teambuilting.rights.AppRight;
+import org.manuel.teambuilting.rights.functions.AppRightConstraint;
 
 /**
  * @author Manuel Doncel Martos
@@ -9,5 +9,5 @@ import org.manuel.teambuilting.rights.AppRight;
  */
 public interface AppPermissionAndRightConstraints<T> {
 
-    AppRight<T> getRightConstraintsForPermisson(Permission permission);
+    AppRightConstraint<? super T> getRightConstraintsForPermisson(Permission permission);
 }

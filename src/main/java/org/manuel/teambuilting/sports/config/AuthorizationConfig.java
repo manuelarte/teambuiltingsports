@@ -1,12 +1,16 @@
 package org.manuel.teambuilting.sports.config;
 
 import lombok.AllArgsConstructor;
-import org.manuel.teambuilting.rights.AppRight;
+import org.manuel.teambuilting.rights.AppRightConstraintSet;
+import org.manuel.teambuilting.rights.functions.AppRightConstraint;
 import org.manuel.teambuilting.rights.functions.CollectionEntriesFunction;
-import org.manuel.teambuilting.rights.roles.AppRole;
 import org.manuel.teambuilting.rights.roles.AppEntityAuthorization;
 import org.manuel.teambuilting.rights.roles.AppPermissionAndRightConstraints;
-import org.manuel.teambuilting.sports.authorization.*;
+import org.manuel.teambuilting.rights.roles.AppRole;
+import org.manuel.teambuilting.sports.authorization.AppAuthorizationManagerImpl;
+import org.manuel.teambuilting.sports.authorization.AppEntityAuthorizationImpl;
+import org.manuel.teambuilting.sports.authorization.AppPermissionAndRightConstraintsImpl;
+import org.manuel.teambuilting.sports.authorization.UserModifyTheirPlayer;
 import org.manuel.teambuilting.sports.model.PlayerToTeamSportDetails;
 import org.manuel.teambuilting.sports.repositories.PlayerToTeamSportDetailsRepository;
 import org.manuel.teambuilting.sports.repositories.UserDataRepository;
@@ -33,9 +37,9 @@ public class AuthorizationConfig {
         final AppPermissionAndRightConstraints<PlayerToTeamSportDetails> rightsForPlayerToTeamSportDetails
                 = new AppPermissionAndRightConstraintsImpl.PermissionAndRightConstraintsImplBuilder()
                 .create(new UserModifyTheirPlayer<>(getEntityAuthorizationManagerForCreatePlayerToTeamSportDetails(), userDataRepository))
-                .read(AppRight.of(allow()))
-                .update(new UserModifyTheirPlayer<>(AppRight.of(allow()), userDataRepository))
-                .delete(new UserModifyTheirPlayer<>(AppRight.of(allow()), userDataRepository))
+                .read(AppRightConstraintSet.of(allow()))
+                .update(new UserModifyTheirPlayer<>(AppRightConstraintSet.of(allow()), userDataRepository))
+                .delete(new UserModifyTheirPlayer<>(AppRightConstraintSet.of(allow()), userDataRepository))
                 .build();
 
         final AppEntityAuthorization<PlayerToTeamSportDetails> rolePermissionAndRightConstraintsMap
@@ -53,11 +57,11 @@ public class AuthorizationConfig {
                 .build();
     }
 
-    private AppRight<PlayerToTeamSportDetails> getEntityAuthorizationManagerForCreatePlayerToTeamSportDetails() {
+    private AppRightConstraint<PlayerToTeamSportDetails> getEntityAuthorizationManagerForCreatePlayerToTeamSportDetails() {
         final CollectionEntriesFunction<PlayerToTeamSportDetails, PlayerToTeamSportDetailsRepository>
                 maxOnePlayerToTeamSportDetails =
                 new CollectionEntriesFunction<>(max(1), playerToTeamSportDetailsRepository);
-        return AppRight.of(maxOnePlayerToTeamSportDetails);
+        return AppRightConstraintSet.of(maxOnePlayerToTeamSportDetails);
     }
 
     private AppEntityAuthorization<?> test() {

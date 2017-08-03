@@ -5,7 +5,7 @@ import com.google.common.base.Optional;
 import lombok.AllArgsConstructor;
 import org.manuel.teambuilting.core.exceptions.UserNotAllowedToModifyEntityException;
 import org.manuel.teambuilting.core.model.PlayerDependentEntity;
-import org.manuel.teambuilting.rights.AppRight;
+import org.manuel.teambuilting.rights.functions.AppRightConstraint;
 import org.manuel.teambuilting.sports.model.UserData;
 import org.manuel.teambuilting.sports.repositories.UserDataRepository;
 
@@ -14,9 +14,9 @@ import org.manuel.teambuilting.sports.repositories.UserDataRepository;
  * @since 02/08/2017.
  */
 @AllArgsConstructor
-public class UserModifyTheirPlayer<T extends PlayerDependentEntity> extends AppRight<T> {
+public class UserModifyTheirPlayer<T extends PlayerDependentEntity> implements AppRightConstraint<T> {
 
-    protected final AppRight<T> entityAuthorizationManager;
+    protected final AppRightConstraint<T> entityAuthorizationManager;
     private final UserDataRepository userDataRepository;
 
     public void isGranted(final T object, final AuthenticationJsonWebToken authentication) {
