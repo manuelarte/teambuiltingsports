@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import org.manuel.teambuilting.core.exceptions.UserNotAllowedToModifyEntityException;
 import org.manuel.teambuilting.core.model.PlayerDependentEntity;
 import org.manuel.teambuilting.rights.AppRightConstraint;
+import org.manuel.teambuilting.rights.roles.AppRole;
+import org.manuel.teambuilting.rights.util.AuthenticationUtil;
 import org.manuel.teambuilting.sports.model.UserData;
 import org.manuel.teambuilting.sports.repositories.UserDataRepository;
 
@@ -20,19 +22,20 @@ public class UserModifyTheirPlayer<T extends PlayerDependentEntity> implements A
     private final UserDataRepository userDataRepository;
 
     public void isGranted(final T object, final AuthenticationJsonWebToken authentication) {
-        if (notSameUser(authentication.getName(), object) || notAdmin(authentication.getName())) {
+        if (!playerOfUser(authentication.getName(), object) || !isAdmin(authentication)) {
             throw new UserNotAllowedToModifyEntityException("User cannot modify this player");
         }
         entityAuthorizationManager.isGranted(object, authentication);
     }
 
-    private boolean notSameUser(final String userId, final T object) {
+    private boolean playerOfUser(final String userId, final T object) {
         final Optional<UserData> userData = Optional.fromNullable(userDataRepository.findOne(userId));
         return userData.isPresent() && userData.get().getPlayerId().equals(object.getPlayerId());
     }
 
-    private boolean notAdmin(final String userId) {
-        return "google-oauth2|115535991985670597779".equals(userId);
+    private boolean isAdmin(final AuthenticationJsonWebToken authentication) {
+        return AuthenticationUtil.getAppRole(authentication) == AppRole.ADMIN ||
+                "google-oauth2|115535991985670597779".equals(authentication.getName());
     }
 
 }

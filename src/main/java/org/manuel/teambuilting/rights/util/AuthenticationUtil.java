@@ -12,7 +12,7 @@ import org.springframework.security.core.Authentication;
 @UtilityClass
 public class AuthenticationUtil {
 
-    public static AppRole getAppRoleFor(final Authentication authentication) {
+    public static AppRole getAppRole(final Authentication authentication) {
         AppRole toReturn = AppRole.VISITOR;
         if (authentication != null && authentication instanceof AuthenticationJsonWebToken) {
             toReturn = AppRole.FREE;
