@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.manuel.teambuilting.core.model.PlayerDependentEntity;
+import org.manuel.teambuilting.core.model.UserDependentEntity;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -22,7 +23,7 @@ import java.math.BigInteger;
 @Getter
 @Setter
 @NoArgsConstructor
-public class UserData implements PlayerDependentEntity {
+public class UserData implements PlayerDependentEntity, UserDependentEntity {
 
     @Id
     private String userId;

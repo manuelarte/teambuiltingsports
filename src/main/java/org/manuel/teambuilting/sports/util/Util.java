@@ -5,7 +5,6 @@ import com.auth0.Auth0User;
 import com.auth0.Tokens;
 import com.auth0.spring.security.api.authentication.AuthenticationJsonWebToken;
 import lombok.AllArgsConstructor;
-import org.manuel.teambuilting.rights.roles.AppRole;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
@@ -28,18 +27,6 @@ public class Util {
 		if (auth instanceof AuthenticationJsonWebToken) {
 			final String token = ((AuthenticationJsonWebToken) auth).getToken();
 			toReturn = Optional.of(auth0Client.getUserProfile(new Tokens(token, null, "JWT", null)));
-		}
-		return toReturn;
-	}
-
-	public AppRole getYourAppRole() {
-		return getAppRoleFor(SecurityContextHolder.getContext().getAuthentication());
-	}
-
-	public AppRole getAppRoleFor(final Authentication authentication) {
-		AppRole toReturn = AppRole.VISITOR;
-		if (authentication != null && authentication instanceof AuthenticationJsonWebToken) {
-			toReturn = AppRole.FREE;
 		}
 		return toReturn;
 	}

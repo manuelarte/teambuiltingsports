@@ -8,7 +8,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.manuel.teambuilting.core.model.PlayerDependentEntity;
+import org.manuel.teambuilting.core.model.IdAndPlayerDependentEntity;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -28,7 +28,7 @@ import java.util.Set;
 @lombok.Builder
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public class PlayerToTeamSportDetails implements PlayerDependentEntity {
+public class PlayerToTeamSportDetails implements IdAndPlayerDependentEntity<String> {
 
 	@Id
 	private String id;
