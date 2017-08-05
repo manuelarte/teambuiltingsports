@@ -1,10 +1,10 @@
 package org.manuel.teambuilting.authorization.impl;
 
-import com.auth0.spring.security.api.authentication.AuthenticationJsonWebToken;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Singular;
 import org.manuel.teambuilting.authorization.rights.AppRightConstraint;
+import org.springframework.security.core.Authentication;
 
 import java.util.Arrays;
 import java.util.Set;
@@ -29,7 +29,7 @@ public class AppRightConstraintOfSeveralConstraints<Entity> implements AppRightC
         this.chains = Arrays.stream(appRights).collect(Collectors.toSet());
     }
 
-    public void isGranted(final Entity object, final AuthenticationJsonWebToken authentication) {
-        chains.forEach(rightCheck -> rightCheck.isGranted(object, authentication));
+    public boolean isGranted(final Entity object, final Authentication authentication) {
+        return !chains.stream().filter(rightCheck -> !rightCheck.isGranted(object, authentication)).findAny().isPresent();
     }
 }

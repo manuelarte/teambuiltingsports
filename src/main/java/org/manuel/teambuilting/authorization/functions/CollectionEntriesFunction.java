@@ -1,10 +1,10 @@
 package org.manuel.teambuilting.authorization.functions;
 
-import com.auth0.spring.security.api.authentication.AuthenticationJsonWebToken;
 import lombok.AllArgsConstructor;
+import org.manuel.teambuilting.authorization.rights.AppRightConstraint;
 import org.manuel.teambuilting.core.model.PlayerDependentEntity;
 import org.manuel.teambuilting.core.repositories.PlayerDependentRepository;
-import org.manuel.teambuilting.authorization.rights.AppRightConstraint;
+import org.springframework.security.core.Authentication;
 
 import java.util.Collection;
 import java.util.function.Function;
@@ -23,13 +23,13 @@ public class CollectionEntriesFunction<Entity extends PlayerDependentEntity,
     private final Repository repository;
 
     @Override
-    public void isGranted(final Entity object, final AuthenticationJsonWebToken authentication) {
+    public boolean isGranted(final Entity object, final Authentication authentication) {
         final Function<Entity, Collection<Entity>> function =
                 entity -> repository.findByPlayerId(entity.getPlayerId());
         final CustomEntryFunction<Entity, Collection<Entity>> collectionMatchFunction =
                 CustomEntryFunction.of(function, predicate);
 
-        collectionMatchFunction.isGranted(object, authentication);
+        return collectionMatchFunction.isGranted(object, authentication);
     }
 
 }

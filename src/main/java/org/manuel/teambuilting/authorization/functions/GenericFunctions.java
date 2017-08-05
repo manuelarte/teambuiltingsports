@@ -1,7 +1,6 @@
 package org.manuel.teambuilting.authorization.functions;
 
 import lombok.experimental.UtilityClass;
-import org.manuel.teambuilting.core.exceptions.UserNotAllowedToModifyEntityException;
 import org.manuel.teambuilting.authorization.rights.AppRightConstraint;
 import org.manuel.teambuilting.authorization.rights.RightRestriction;
 
@@ -30,13 +29,11 @@ public class GenericFunctions {
     }
 
     public static <T> AppRightConstraint<T> allow() {
-        return (o1, o2) -> returnVoid();
+        return (o1, o2) -> true;
     }
 
     public static <T> AppRightConstraint<T> deny() {
-        return (o1, o2) -> new UserNotAllowedToModifyEntityException();
+        return (o1, o2) -> false;
     }
-
-    private static void returnVoid(){}
 
 }

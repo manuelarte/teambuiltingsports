@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.manuel.teambuilting.core.exceptions.UserNotAllowedToModifyEntityException;
 import org.manuel.teambuilting.core.model.IdAndPlayerDependentEntity;
 import org.manuel.teambuilting.authorization.AppEntityAuthorization;
 import org.manuel.teambuilting.authorization.permissions.AppCrudPermission;
@@ -40,8 +41,11 @@ public class UserDataAspect {
                 AppCrudPermission.CREATE : AppCrudPermission.UPDATE;
 		final AppEntityAuthorization<? super IdAndPlayerDependentEntity> entityAuthorizationManager =
                 authorizationManager.getEntityAuthorizationFor(aClass);
-        entityAuthorizationManager.geConstraintsFor(appRole).getRightConstraintsForPermisson(permission)
-                .isGranted(playerIdDependentEntity, (AuthenticationJsonWebToken) authentication);
+        if (!entityAuthorizationManager.geConstraintsFor(appRole).getRightConstraintsForPermisson(permission)
+                .isGranted(playerIdDependentEntity, (AuthenticationJsonWebToken) authentication)) {
+            throw new UserNotAllowedToModifyEntityException(entityAuthorizationManager.geConstraintsFor(appRole).getRightConstraintsForPermisson(permission)
+            .getNotGrantedReason());
+        }
 	}
 
 }

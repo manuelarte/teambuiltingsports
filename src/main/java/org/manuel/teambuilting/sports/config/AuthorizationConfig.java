@@ -34,6 +34,11 @@ public class AuthorizationConfig {
     @Bean
     public AppAuthorizationManagerImpl appAuthorizationManager() {
 
+        final AppPermissionAndRightConstraints<PlayerToTeamSportDetails> visitorRoleForPlayerToTeamSportDetails
+                = new AppPermissionAndRightConstraintsImpl.PermissionAndRightConstraintsImplBuilder()
+                .read(AppRightConstraintOfSeveralConstraints.of(allow()))
+                .build();
+
         final AppPermissionAndRightConstraints<PlayerToTeamSportDetails> rightsForPlayerToTeamSportDetails
                 = new AppPermissionAndRightConstraintsImpl.PermissionAndRightConstraintsImplBuilder()
                 .create(new UserModifyTheirPlayer<>(getEntityAuthorizationManagerForCreatePlayerToTeamSportDetails(), userDataRepository))
@@ -44,6 +49,7 @@ public class AuthorizationConfig {
 
         final AppEntityAuthorization<PlayerToTeamSportDetails> rolePermissionAndRightConstraintsMap
                 = AppEntityAuthorizationImpl.<PlayerToTeamSportDetails>builder()
+                .constraint(AppRole.VISITOR, visitorRoleForPlayerToTeamSportDetails)
                 .constraint(AppRole.ADMIN, rightsForPlayerToTeamSportDetails)
                 .constraint(AppRole.FREE, rightsForPlayerToTeamSportDetails)
                 .constraint(AppRole.GOLD, rightsForPlayerToTeamSportDetails)

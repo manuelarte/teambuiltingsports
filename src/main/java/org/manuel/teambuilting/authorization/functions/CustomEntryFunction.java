@@ -1,9 +1,8 @@
 package org.manuel.teambuilting.authorization.functions;
 
-import com.auth0.spring.security.api.authentication.AuthenticationJsonWebToken;
 import lombok.AllArgsConstructor;
-import org.manuel.teambuilting.core.exceptions.UserNotAllowedToModifyEntityException;
 import org.manuel.teambuilting.authorization.rights.AppRightConstraint;
+import org.springframework.security.core.Authentication;
 
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -20,10 +19,8 @@ public class CustomEntryFunction<Entity, T>
     private final Predicate<T> predicate;
 
     @Override
-    public void isGranted(final Entity object, final AuthenticationJsonWebToken authentication) {
-        if (!predicate.test(function.apply(object))) {
-            throw new UserNotAllowedToModifyEntityException("CustomEntryFunction not passed");
-        }
+    public boolean isGranted(final Entity object, final Authentication authentication) {
+        return predicate.test(function.apply(object)) ? true : false;
     }
 
 }

@@ -1,15 +1,14 @@
 package org.manuel.teambuilting.sports.authorization;
 
-import com.auth0.spring.security.api.authentication.AuthenticationJsonWebToken;
 import com.google.common.base.Optional;
 import lombok.AllArgsConstructor;
-import org.manuel.teambuilting.core.exceptions.UserNotAllowedToModifyEntityException;
-import org.manuel.teambuilting.core.model.PlayerDependentEntity;
 import org.manuel.teambuilting.authorization.rights.AppRightConstraint;
 import org.manuel.teambuilting.authorization.roles.AppRole;
 import org.manuel.teambuilting.authorization.util.AuthenticationUtil;
+import org.manuel.teambuilting.core.model.PlayerDependentEntity;
 import org.manuel.teambuilting.sports.model.UserData;
 import org.manuel.teambuilting.sports.repositories.UserDataRepository;
+import org.springframework.security.core.Authentication;
 
 /**
  * @author Manuel Doncel Martos
@@ -21,11 +20,17 @@ public class UserModifyTheirPlayer<T extends PlayerDependentEntity> implements A
     protected final AppRightConstraint<T> entityAuthorizationManager;
     private final UserDataRepository userDataRepository;
 
-    public void isGranted(final T object, final AuthenticationJsonWebToken authentication) {
+    @Override
+    public boolean isGranted(final T object, final Authentication authentication) {
         if (!playerOfUser(authentication.getName(), object) || !isAdmin(authentication)) {
-            throw new UserNotAllowedToModifyEntityException("User cannot modify this player");
+            return false;
         }
-        entityAuthorizationManager.isGranted(object, authentication);
+        return entityAuthorizationManager.isGranted(object, authentication);
+    }
+
+    @Override
+    public String getNotGrantedReason() {
+        return "User cannot modify this player";
     }
 
     private boolean playerOfUser(final String userId, final T object) {
@@ -33,7 +38,7 @@ public class UserModifyTheirPlayer<T extends PlayerDependentEntity> implements A
         return userData.isPresent() && userData.get().getPlayerId().equals(object.getPlayerId());
     }
 
-    private boolean isAdmin(final AuthenticationJsonWebToken authentication) {
+    private boolean isAdmin(final Authentication authentication) {
         return AuthenticationUtil.getAppRole(authentication) == AppRole.ADMIN ||
                 "google-oauth2|115535991985670597779".equals(authentication.getName());
     }

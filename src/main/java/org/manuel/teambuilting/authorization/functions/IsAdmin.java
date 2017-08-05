@@ -1,8 +1,10 @@
 package org.manuel.teambuilting.authorization.functions;
 
-import com.auth0.spring.security.api.authentication.AuthenticationJsonWebToken;
 import lombok.AllArgsConstructor;
 import org.manuel.teambuilting.authorization.rights.AppRightConstraint;
+import org.manuel.teambuilting.authorization.roles.AppRole;
+import org.manuel.teambuilting.authorization.util.AuthenticationUtil;
+import org.springframework.security.core.Authentication;
 
 /**
  * @author Manuel Doncel Martos
@@ -11,7 +13,8 @@ import org.manuel.teambuilting.authorization.rights.AppRightConstraint;
 @AllArgsConstructor(staticName = "yes")
 public class IsAdmin implements AppRightConstraint<Object> {
 
-    public void isGranted(final Object object, final AuthenticationJsonWebToken authentication) {
+    public boolean isGranted(final Object object, final Authentication authentication) {
+        return AuthenticationUtil.getAppRole(authentication) == AppRole.ADMIN;
     }
 
 }
