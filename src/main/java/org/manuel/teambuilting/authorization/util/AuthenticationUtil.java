@@ -1,8 +1,8 @@
-package org.manuel.teambuilting.rights.util;
+package org.manuel.teambuilting.authorization.util;
 
 import com.auth0.spring.security.api.authentication.AuthenticationJsonWebToken;
 import lombok.experimental.UtilityClass;
-import org.manuel.teambuilting.rights.roles.AppRole;
+import org.manuel.teambuilting.authorization.roles.AppRole;
 import org.springframework.security.core.Authentication;
 
 /**

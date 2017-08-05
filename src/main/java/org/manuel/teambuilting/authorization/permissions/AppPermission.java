@@ -1,4 +1,4 @@
-package org.manuel.teambuilting.rights;
+package org.manuel.teambuilting.authorization.permissions;
 
 /**
  * @author Manuel Doncel Martos

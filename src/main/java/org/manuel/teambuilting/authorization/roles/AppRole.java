@@ -1,6 +1,6 @@
-package org.manuel.teambuilting.rights.roles;
+package org.manuel.teambuilting.authorization.roles;
 
-import org.manuel.teambuilting.rights.AppPermission;
+import org.manuel.teambuilting.authorization.permissions.AppPermission;
 
 /**
  * @author Manuel Doncel Martos

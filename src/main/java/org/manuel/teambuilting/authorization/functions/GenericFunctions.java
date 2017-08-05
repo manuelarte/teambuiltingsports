@@ -1,9 +1,9 @@
-package org.manuel.teambuilting.rights.functions;
+package org.manuel.teambuilting.authorization.functions;
 
 import lombok.experimental.UtilityClass;
 import org.manuel.teambuilting.core.exceptions.UserNotAllowedToModifyEntityException;
-import org.manuel.teambuilting.rights.AppRightConstraint;
-import org.manuel.teambuilting.rights.RightRestriction;
+import org.manuel.teambuilting.authorization.rights.AppRightConstraint;
+import org.manuel.teambuilting.authorization.rights.RightRestriction;
 
 import java.util.Collection;
 

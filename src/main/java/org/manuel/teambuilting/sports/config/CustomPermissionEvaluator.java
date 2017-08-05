@@ -1,7 +1,7 @@
 package org.manuel.teambuilting.sports.config;
 
 import lombok.AllArgsConstructor;
-import org.manuel.teambuilting.rights.AppAuthorizationManager;
+import org.manuel.teambuilting.authorization.AppAuthorizationManager;
 import org.manuel.teambuilting.sports.util.Util;
 import org.springframework.security.access.PermissionEvaluator;
 import org.springframework.security.core.Authentication;

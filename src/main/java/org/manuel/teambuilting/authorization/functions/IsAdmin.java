@@ -1,8 +1,8 @@
-package org.manuel.teambuilting.rights.functions;
+package org.manuel.teambuilting.authorization.functions;
 
 import com.auth0.spring.security.api.authentication.AuthenticationJsonWebToken;
 import lombok.AllArgsConstructor;
-import org.manuel.teambuilting.rights.AppRightConstraint;
+import org.manuel.teambuilting.authorization.rights.AppRightConstraint;
 
 /**
  * @author Manuel Doncel Martos

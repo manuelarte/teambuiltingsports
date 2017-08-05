@@ -1,6 +1,6 @@
 package org.manuel.teambuilting.sports.authorization.rights;
 
-import org.manuel.teambuilting.rights.AppPermission;
+import org.manuel.teambuilting.authorization.permissions.AppPermission;
 
 /**
  * @author Manuel Doncel Martos

@@ -4,11 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import lombok.Singular;
-import org.manuel.teambuilting.rights.AppRightConstraint;
-import org.manuel.teambuilting.rights.AppAuthorizationManager;
-import org.manuel.teambuilting.rights.AppEntityAuthorization;
-import org.manuel.teambuilting.rights.AppPermissionAndRightConstraints;
-import org.manuel.teambuilting.rights.roles.AppRole;
+import org.manuel.teambuilting.authorization.rights.AppRightConstraint;
+import org.manuel.teambuilting.authorization.AppAuthorizationManager;
+import org.manuel.teambuilting.authorization.AppEntityAuthorization;
+import org.manuel.teambuilting.authorization.rights.AppPermissionAndRightConstraints;
+import org.manuel.teambuilting.authorization.roles.AppRole;
 
 import java.util.HashMap;
 import java.util.Map;

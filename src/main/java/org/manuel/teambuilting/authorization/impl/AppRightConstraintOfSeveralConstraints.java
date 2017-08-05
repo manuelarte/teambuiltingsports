@@ -1,10 +1,10 @@
-package org.manuel.teambuilting.rights.impl;
+package org.manuel.teambuilting.authorization.impl;
 
 import com.auth0.spring.security.api.authentication.AuthenticationJsonWebToken;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Singular;
-import org.manuel.teambuilting.rights.AppRightConstraint;
+import org.manuel.teambuilting.authorization.rights.AppRightConstraint;
 
 import java.util.Arrays;
 import java.util.Set;

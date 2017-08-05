@@ -1,10 +1,10 @@
-package org.manuel.teambuilting.rights.functions;
+package org.manuel.teambuilting.authorization.functions;
 
 import com.auth0.spring.security.api.authentication.AuthenticationJsonWebToken;
 import lombok.AllArgsConstructor;
 import org.manuel.teambuilting.core.exceptions.UserNotAllowedToModifyEntityException;
-import org.manuel.teambuilting.rights.AppRightConstraint;
-import org.manuel.teambuilting.rights.roles.AppRole;
+import org.manuel.teambuilting.authorization.rights.AppRightConstraint;
+import org.manuel.teambuilting.authorization.roles.AppRole;
 
 import java.util.function.Predicate;
 
