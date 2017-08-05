@@ -6,7 +6,11 @@ package org.manuel.teambuilting.sports.controllers.query;
 import org.manuel.teambuilting.core.exceptions.ValidationRuntimeException;
 import org.manuel.teambuilting.sports.model.TeamSport;
 import org.manuel.teambuilting.sports.model.TeamSportPosition;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.constraints.NotNull;
 import java.util.Arrays;
@@ -32,6 +36,7 @@ public class SportQueryController {
 	}
 
 	@GetMapping(path = "/{teamSportname}")
+	@PreAuthorize("hasPermission(#teamSportName, 'read')")
 	public List<TeamSportPosition> getTeamSport(@PathVariable("teamSportname") @NotNull final String teamSportName) {
 		final Optional<TeamSport> sport = Arrays.stream(TeamSport.values())
 				.filter(teamSport -> teamSport.getName().equals(teamSportName)).findFirst();
