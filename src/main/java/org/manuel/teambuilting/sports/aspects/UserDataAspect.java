@@ -10,7 +10,7 @@ import org.manuel.teambuilting.core.exceptions.UserNotAllowedToModifyEntityExcep
 import org.manuel.teambuilting.core.model.PlayerDependentEntity;
 import org.manuel.teambuilting.rights.AppEntityAuthorization;
 import org.manuel.teambuilting.rights.roles.AppRole;
-import org.manuel.teambuilting.rights.roles.Permission;
+import org.manuel.teambuilting.rights.roles.AppCrudPermission;
 import org.manuel.teambuilting.sports.authorization.AppAuthorizationManagerImpl;
 import org.manuel.teambuilting.sports.model.UserData;
 import org.manuel.teambuilting.sports.services.query.UserService;
@@ -44,7 +44,8 @@ public class UserDataAspect {
 		}
         final Class<? extends PlayerDependentEntity> aClass = playerIdDependentEntity.getClass();
         final AppEntityAuthorization<? super PlayerDependentEntity> entityAuthorizationManager = authorizationManager.getEntityAuthorizationFor(aClass);
-        entityAuthorizationManager.geConstraintsFor(AppRole.ADMIN).getRightConstraintsForPermisson(Permission.READ).isGranted(playerIdDependentEntity, (AuthenticationJsonWebToken) SecurityContextHolder.getContext().getAuthentication());
+        entityAuthorizationManager.geConstraintsFor(AppRole.ADMIN).getRightConstraintsForPermisson(AppCrudPermission.READ)
+                .isGranted(playerIdDependentEntity, (AuthenticationJsonWebToken) SecurityContextHolder.getContext().getAuthentication());
 	}
 
 }
