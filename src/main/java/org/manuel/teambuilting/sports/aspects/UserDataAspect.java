@@ -1,19 +1,16 @@
 package org.manuel.teambuilting.sports.aspects;
 
-import com.auth0.spring.security.api.authentication.AuthenticationJsonWebToken;
 import lombok.AllArgsConstructor;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
-import org.manuel.teambuilting.core.exceptions.UserNotAllowedToModifyEntityException;
-import org.manuel.teambuilting.core.model.IdAndPlayerDependentEntity;
+import org.manuel.teambuilting.authorization.AppAuthorizationManager;
 import org.manuel.teambuilting.authorization.AppEntityAuthorization;
 import org.manuel.teambuilting.authorization.permissions.AppCrudPermission;
 import org.manuel.teambuilting.authorization.roles.AppRole;
 import org.manuel.teambuilting.authorization.util.AuthenticationUtil;
-import org.manuel.teambuilting.sports.authorization.AppAuthorizationManagerImpl;
-import org.manuel.teambuilting.sports.services.query.UserService;
-import org.manuel.teambuilting.sports.util.Util;
+import org.manuel.teambuilting.core.exceptions.UserNotAllowedToModifyEntityException;
+import org.manuel.teambuilting.core.model.IdAndPlayerDependentEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
@@ -27,9 +24,7 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 public class UserDataAspect {
 
-	private final UserService userService;
-	private final Util util;
-	private final AppAuthorizationManagerImpl authorizationManager;
+	private final AppAuthorizationManager authorizationManager;
 
 	@Before(
 		value="@annotation(org.manuel.teambuilting.core.aspects.UserCanCud) && args(playerIdDependentEntity)")
@@ -42,7 +37,7 @@ public class UserDataAspect {
 		final AppEntityAuthorization<? super IdAndPlayerDependentEntity> entityAuthorizationManager =
                 authorizationManager.getEntityAuthorizationFor(aClass);
         if (!entityAuthorizationManager.geConstraintsFor(appRole).getRightConstraintsForPermisson(permission)
-                .isGranted(playerIdDependentEntity, (AuthenticationJsonWebToken) authentication)) {
+                .isGranted(playerIdDependentEntity, authentication)) {
             throw new UserNotAllowedToModifyEntityException(entityAuthorizationManager.geConstraintsFor(appRole).getRightConstraintsForPermisson(permission)
             .getNotGrantedReason());
         }
