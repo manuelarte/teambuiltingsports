@@ -1,15 +1,16 @@
 package org.manuel.teambuilting.sports.config;
 
 import lombok.AllArgsConstructor;
-import org.manuel.teambuilting.authorization.impl.AppRightConstraintOfSeveralConstraints;
-import org.manuel.teambuilting.authorization.rights.AppRightConstraint;
-import org.manuel.teambuilting.authorization.functions.CollectionEntriesFunction;
+import org.manuel.teambuilting.authorization.AppAuthorizationManager;
 import org.manuel.teambuilting.authorization.AppEntityAuthorization;
+import org.manuel.teambuilting.authorization.functions.CollectionEntriesFunction;
+import org.manuel.teambuilting.authorization.impl.AppAuthorizationManagerImpl;
+import org.manuel.teambuilting.authorization.impl.AppEntityAuthorizationImpl;
+import org.manuel.teambuilting.authorization.impl.AppPermissionAndRightConstraintsImpl;
+import org.manuel.teambuilting.authorization.impl.AppRightConstraintOfSeveralConstraints;
 import org.manuel.teambuilting.authorization.rights.AppPermissionAndRightConstraints;
+import org.manuel.teambuilting.authorization.rights.AppRightConstraint;
 import org.manuel.teambuilting.authorization.roles.AppRole;
-import org.manuel.teambuilting.sports.authorization.AppAuthorizationManagerImpl;
-import org.manuel.teambuilting.sports.authorization.AppEntityAuthorizationImpl;
-import org.manuel.teambuilting.sports.authorization.AppPermissionAndRightConstraintsImpl;
 import org.manuel.teambuilting.sports.authorization.UserModifyTheirPlayer;
 import org.manuel.teambuilting.sports.model.PlayerToTeamSportDetails;
 import org.manuel.teambuilting.sports.repositories.PlayerToTeamSportDetailsRepository;
@@ -32,7 +33,7 @@ public class AuthorizationConfig {
     private final UserDataRepository userDataRepository;
 
     @Bean
-    public AppAuthorizationManagerImpl appAuthorizationManager() {
+    public AppAuthorizationManager appAuthorizationManager() {
 
         final AppPermissionAndRightConstraints<PlayerToTeamSportDetails> visitorRoleForPlayerToTeamSportDetails
                 = new AppPermissionAndRightConstraintsImpl.PermissionAndRightConstraintsImplBuilder()
