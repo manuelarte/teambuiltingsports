@@ -46,8 +46,6 @@ public class AuthorizationConfig {
                 .constraint(AppRole.PREMIUM, rightsForPlayerToTeamSportDetails)
                 .build();
 
-        test();
-
         return AppAuthorizationManagerImpl.builder()
                 .forEntity(PlayerToTeamSportDetails.class, rolePermissionAndRightConstraintsMap)
                 .build();
@@ -56,18 +54,8 @@ public class AuthorizationConfig {
     private AppRight<PlayerToTeamSportDetails> getEntityAuthorizationManagerForCreatePlayerToTeamSportDetails() {
         final CollectionEntriesFunction<PlayerToTeamSportDetails, PlayerToTeamSportDetailsRepository>
                 maxOnePlayerToTeamSportDetails =
-                new CollectionEntriesFunction<>(max(1), playerToTeamSportDetailsRepository);
+                new CollectionEntriesFunction<>(max(2), playerToTeamSportDetailsRepository);
         return AppRight.of(maxOnePlayerToTeamSportDetails);
-    }
-
-    private AppEntityAuthorization<?> test() {
-        //EntityAuthorizationBuilder.forEntity(PlayerToTeamSportDetails.class);
-
-        return AppEntityAuthorizationImpl.builder()
-            .forRole(AppRole.ADMIN).create(null).read(null).update(null).delete(null)
-            .andForRole(AppRole.FREE).create(null).read(null).update(null).delete(null)
-            .andForRole(AppRole.PREMIUM).create(null).read(null).update(null).delete(null)
-            .andForRole(AppRole.GOLD).create(null).read(null).update(null).delete(null).build();
     }
 
 }
